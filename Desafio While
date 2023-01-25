@@ -1,0 +1,174 @@
+package controle;
+
+import java.util.Scanner;
+
+public class DesafioWhile {
+	public static void main(String[] args) {
+		Scanner entrada = new Scanner(System.in);
+		
+		int loopNotas = 0;
+		int contador = 0;
+		String comando = "";
+		
+		double port = 0;
+		double hist = 0;
+		double geo = 0;
+		double mat = 0;
+		double ing = 0;
+		int idTurma = 0;
+		int numNotas = 0;
+		double mediaAluno = 0;
+		double totalNotas = 0;
+		int numTurmas = 0;
+		int recuperacao = 0;
+		String alunoNome = "";
+		
+
+		
+		System.out.println("Bem-vindo ao sistema de calculo de médias!");
+		System.out.println("\nPara calcular a média de cada aluno, digite 0.\n\nPara calcular a média entre turmas, digite 1.");
+		comando = entrada.nextLine();
+	
+			if(comando.equals("0")) {
+				System.out.println("Iniciado: sistema de cálculo individual de notas.\n");
+		
+				while(!(comando.equalsIgnoreCase("N"))) {
+					alunoNome = "";
+					contador = ++contador;
+					System.out.println("\nDigite o nome do aluno: ");
+					alunoNome = entrada.nextLine();
+					System.out.println("\nID atribuido ao aluno:" + contador);
+					System.out.println("\nDigite a nota de português do aluno: ");
+					port = entrada.nextDouble();
+						while(port > 10 || port < 0) {
+							System.out.println("Nota incorreta. Tente novamente.");
+							System.out.println("Digite a nota de português do aluno: ");
+							port = entrada.nextDouble();
+						}
+			
+					System.out.println("Digite a nota de história do aluno: ");
+					hist = entrada.nextDouble();
+						while(hist > 10 || hist < 0) {
+							System.out.println("Nota incorreta. Tente novamente.");
+							System.out.println("Digite a nota de história do aluno: ");
+							hist = entrada.nextDouble();
+						} 
+
+					System.out.println("Digite a nota de geografia do aluno: ");
+					geo = entrada.nextDouble();
+						while(geo > 10 || geo < 0) {
+							System.out.println("Nota incorreta. Tente novamente.");
+							System.out.println("Digite a nota de geografia do aluno: ");
+							geo = entrada.nextDouble();
+						} 
+				
+					System.out.println("Digite a nota de matemática do aluno: ");
+					mat = entrada.nextDouble();
+						while(mat > 10 || mat < 0) {
+							System.out.println("Nota incorreta. Tente novamente.");
+							System.out.println("Digite a nota de matemática do aluno: ");
+							mat = entrada.nextDouble();
+						}
+					
+					System.out.println("Digite a nota de inglês do aluno: ");
+					ing = entrada.nextDouble();
+						while(ing > 10 || ing < 0) {
+							System.out.println("Nota incorreta. Tente novamente.");
+							System.out.println("Digite a nota de inglês do aluno: ");
+							ing = entrada.nextDouble();
+						}
+				double media = (port + hist + geo + mat + ing) / 5;					 	 		
+				
+				System.out.println("\nResumo dos dados e cálculo de média:");						 
+				System.out.println("Aluno: " + alunoNome);
+				System.out.println("\nNotas computadas:");
+				System.out.println("Nota de português: " + port);
+				System.out.println("Nota de história: " + hist);
+				System.out.println("Nota de geografia: " + geo);
+				System.out.println("Nota de matemática: " + mat);
+				System.out.println("Nota de inglês: " + ing);
+				System.out.printf("\nA média do aluno foi: %.2f%n", media);
+				
+				if(media == 10) {
+						System.out.println("Classificação do aluno: S");
+						System.out.println("Parabéns!");
+				}else if(media >= 9) {
+						System.out.println("Classificação do aluno: A");
+				}else if(media >= 8.5) {
+					System.out.println("Classificação do aluno: A-");
+				}else if(media >= 8) {
+					System.out.println("Classificação do aluno: B");
+				}else if(media >= 7.5) {
+					System.out.println("Classificação do aluno: B-");
+				}else if(media >= 7) {
+					System.out.println("Classificação do aluno: C");
+				}else if(media >= 6.5) {
+					System.out.println("Classificação do aluno: C-");
+				}else if(media >= 6) {
+					System.out.println("Classificação do aluno: D");
+				}else if(media >= 5.5) {
+					System.out.println("Classificação do aluno: D-");
+				}else if(media >= 5) {
+					System.out.println("Classificação do aluno: E");
+				}else if(media >= 4.5) {
+					System.out.println("Classificação do aluno: E-");
+					System.out.println("Recuperação.");
+				}else if(media < 4.5) {
+					System.out.println("Classificação do aluno: F");
+					System.out.println("O aluno foi reprovado.");
+				}
+				System.out.println("Para calcular a média de outro aluno, digite 'S'. \nPara fechar o programa, digite 'N'.");
+							comando = entrada.next();
+				}
+							
+				
+			}else if(comando.equals("1")) {
+				
+			while(!(comando.equals("0"))) {
+				System.out.println("Iniciado: sistema de cálculo de média de turmas.\n");
+				System.out.println("Digite o número de turmas a serem computadas:");
+				numTurmas = entrada.nextInt();
+					
+				while(!(contador == numTurmas)) {
+					contador = contador + 1;
+					loopNotas = 0;
+					totalNotas = 0;
+				System.out.println("\nTurma ID: " + contador);
+				System.out.println("Digite o número da turma:");
+				idTurma = entrada.nextInt();
+				System.out.println("Digite o número de alunos da turma:");
+				numNotas = entrada.nextInt();
+					
+					
+					while(!(loopNotas == numNotas)) {
+						loopNotas = loopNotas + 1;
+						System.out.println("\nAluno número " + loopNotas + " de " + numNotas);
+						System.out.println("Digite a média do aluno:");
+						mediaAluno = entrada.nextDouble();
+							if(mediaAluno < 4.5) {
+								recuperacao = recuperacao + 1;
+							}
+						
+						totalNotas = totalNotas + mediaAluno;
+					System.out.println("Média computada!\n");
+				}
+					
+					System.out.println("Turma: " + idTurma);
+					System.out.println("Número de alunos (médias computadas): " + numNotas);
+					System.out.printf("Média da turma: %.2f%n", (totalNotas / numNotas));
+					System.out.println("Alunos em recuperação: " + recuperacao);
+					recuperacao = 0;
+			}	
+				System.out.println("\n\nTrabalho concluído. Para encerrar, digite '0'.");
+				comando = entrada.next();
+				}
+				if(comando.equals("0"))
+					System.out.println("Você escolheu sair");
+			}
+				System.out.println("Sistema encerrado.");
+		
+			
+		
+		entrada.close();
+	}
+}
